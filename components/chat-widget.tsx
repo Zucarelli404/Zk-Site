@@ -144,8 +144,8 @@ export function ChatWidget() {
           aria-label="Chat ZK Solutions"
         >
           <div className="chat-header">
-            <div>
-              <span className="eyebrow">Assistente ZK</span>
+            <div className="chat-header-info">
+              <span className="chat-badge">ASSISTENTE ZK</span>
               <h3>Como posso ajudar?</h3>
             </div>
             <button 
@@ -153,7 +153,7 @@ export function ChatWidget() {
               className="chat-close" 
               onClick={() => setIsOpen(false)}
               aria-label="Fechar"
-            >×</button>
+            >&times;</button>
           </div>
 
           <div ref={messagesRef} className="chat-messages">
