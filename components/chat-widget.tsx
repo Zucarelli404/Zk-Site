@@ -123,16 +123,18 @@ export function ChatWidget() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setIsOpen((c) => !c)}
-        className="btn chat-fab"
-        aria-expanded={isOpen}
-        aria-controls="zk-chat-widget"
-        aria-label={isOpen ? "Fechar chat" : "Abrir chat"}
-      >
-        {isOpen ? "Fechar chat" : "Falar com a IA da ZK"}
-      </button>
+      {!isOpen && (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="btn chat-fab"
+          aria-expanded={false}
+          aria-controls="zk-chat-widget"
+          aria-label="Abrir chat"
+        >
+          Falar com a IA da ZK
+        </button>
+      )}
 
       {isOpen && (
         <aside
