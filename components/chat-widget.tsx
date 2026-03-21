@@ -143,12 +143,15 @@ export function ChatWidget() {
         >
           <div className="chat-header">
             <div>
-              <span className="eyebrow">Assistente IA</span>
+              <span className="eyebrow">Assistente ZK</span>
               <h3>Como posso ajudar?</h3>
-              <p className="small muted">
-                Qualifique sua demanda, tire duvidas e receba direcionamento para a melhor solucao.
-              </p>
             </div>
+            <button 
+              type="button" 
+              className="chat-close" 
+              onClick={() => setIsOpen(false)}
+              aria-label="Fechar"
+            >×</button>
           </div>
 
           <div ref={messagesRef} className="chat-messages">
@@ -158,17 +161,13 @@ export function ChatWidget() {
                 className={`chat-message ${message.role}`}
               >
                 <strong>{message.role === "assistant" ? "ZK IA" : "Você"}</strong>
-                <p className="small" style={{ margin: "0.25rem 0 0" }}>
-                  {message.content}
-                </p>
+                <p>{message.content}</p>
               </div>
             ))}
             {loading && (
               <div className="chat-message assistant chat-loading">
                 <strong>ZK IA</strong>
-                <p className="small muted" style={{ margin: "0.25rem 0 0" }}>
-                  Analisando seu contexto...
-                </p>
+                <p className="muted">Analisando seu contexto...</p>
               </div>
             )}
           </div>
@@ -188,18 +187,17 @@ export function ChatWidget() {
           </div>
 
           <form onSubmit={handleSubmit} className="chat-form">
-            <label htmlFor="chat-input">
-              Escreva sua mensagem
+            <div className="chat-input-wrapper">
               <textarea
                 id="chat-input"
                 ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Explique seu desafio operacional, comercial ou de integracao."
-                rows={3}
+                placeholder="Como podemos ajudar sua empresa hoje?"
+                rows={2}
                 disabled={loading}
               />
-            </label>
+            </div>
             {error && (
               <div className="chat-error">
                 <span className="small muted">{error}</span>
